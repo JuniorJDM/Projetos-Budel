@@ -59,3 +59,5 @@ def processar_dados():
     print(f"Código concluído. Log salvo em 'logs/log{numero_log}.txt'.")
 
 iniciar_codigo()
+
+#teste
