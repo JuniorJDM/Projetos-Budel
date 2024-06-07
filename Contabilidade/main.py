@@ -1,9 +1,13 @@
+## BIBLIOTECAS
 import os
 import keyboard
 import pyautogui
 from time import sleep
 from datetime import datetime
+## BIBLIOTECAS
 
+
+## CODIGO AUTOMAÇÃO
 def iniciar_codigo():
     print("Código iniciado!")
     # Aguarda pela tecla F ser pressionada
@@ -60,4 +64,4 @@ def processar_dados():
 
 iniciar_codigo()
 
-#teste
+##CODIGO AUTOMAÇÃO
