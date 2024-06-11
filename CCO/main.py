@@ -12,7 +12,7 @@ def iniciar_codigo():
 
     sleep(5)
     # Abre o arquivo Excel
-    caminho_arquivo_excel = 'O:\\TECNOLOGIA\\25_Automações\\\\CCO\\dados_cco.xlsx'
+    caminho_arquivo_excel = 'O:\\TECNOLOGIA\\25_Automações\\CCO\\dados_cco.xlsx'
     planilha_nome = 'Plan1'  # Nome da planilha que você deseja ler
     workbook = openpyxl.load_workbook(caminho_arquivo_excel)
     planilha = workbook[planilha_nome]
@@ -110,17 +110,7 @@ def iniciar_codigo():
             
             # Encerrar processo
             pyautogui.click(318, 281, duration=0.3)
-
-            # Forma de pagamento
-            pyautogui.click(224,98,duration=0.3)
-            pyautogui.click(153,190,duration=0.3)
-            pyautogui.write(str(DATA))
-            keyboard.press('tab')
-            pyautogui.click(260,217,duration=0.3)
-            pyautogui.write('b')
-            keyboard.press('tab')
-            pyautogui.click(359,220,duration=0.3)
-            pyautogui.click(1095,700,duration=0.3)
+            pyautogui.click(1096,702,duration=0.3)
             sleep(2)
 
             # Tempo inicial para a verificação da imagem
@@ -130,7 +120,7 @@ def iniciar_codigo():
             while time() - tempo_inicial_verificacao < tempo_max_espera:
                 if pyautogui.locateOnScreen('O:\\MANUTENCAO\\LAVAGENS\\Projeto\\confirmar.png', confidence=0.8) is not None:
                     # Se a imagem for encontrada, execute o último click e saia do loop
-                    pyautogui.click(894, 420, duration=0.3)  
+                    pyautogui.click(883,421, duration=0.3)  
                     sleep(0.3)
                     break
                 sleep(1)
@@ -139,11 +129,12 @@ def iniciar_codigo():
                 # Se a imagem não for encontrada, encerrar o código
                 break
 
-            # Excluir a linha no Excel após executar a ação
-            planilha.delete_rows(row_number, amount=1)
+            # Avançar para a próxima linha
+            row_number += 1
 
-        # Avançar para a próxima linha
-        row_number += 1
+        else:
+            # Avançar para a próxima linha se a linha atual não tiver elementos suficientes
+            row_number += 1
 
     # Salvar as alterações no arquivo Excel
     workbook.save(caminho_arquivo_excel)
