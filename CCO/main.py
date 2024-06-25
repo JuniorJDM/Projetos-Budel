@@ -1,5 +1,3 @@
-#Elaborado por Antonio de Almeida Junior e Lucelio.
-
 import keyboard
 import pyautogui
 import openpyxl
@@ -23,7 +21,7 @@ def iniciar_codigo():
 
     sleep(5)
     # Abre o arquivo Excelcsc
-    caminho_arquivo_excel = 'C:\\Users\\aprendiz.pcm\\Desktop\\site\\dados_cco.xlsx'
+    caminho_arquivo_excel = 'O:\\AUTOMAÇÕES\\Dados\\CCO\\Pedido_Compra.xlsx'
     planilha_nome = 'Plan1'  # Nome da planilha que você deseja ler
     workbook = openpyxl.load_workbook(caminho_arquivo_excel)
     planilha = workbook[planilha_nome]
@@ -52,16 +50,17 @@ def iniciar_codigo():
         linha = planilha[row_number]
 
         # Certifique-se de que há elementos suficientes antes de tentar acessar os índices
-        if len(linha) >= 7:
+        if len(linha) >= 8:
             #data, valor, lavagem, placa, cnpj = linha
             TITULO = linha[0].value
             CUSTO = linha[1].value
-            AREA = linha[2].value
-            TABELA = linha[3].value
-            PLACA = linha[4].value
-            PRODUTO = linha[5].value
-            TOTAL = linha[6].value
-            DATA = linha[7].value
+            RESPONSAVEL = linha[2].value
+            AREA = linha[3].value
+            TABELA = linha[4].value
+            PLACA = linha[5].value
+            PRODUTO = linha[6].value
+            TOTAL = linha[7].value
+            DATA = linha[8].value
 
             ## código de automação ##
 
@@ -81,7 +80,7 @@ def iniciar_codigo():
             pyautogui.click(212,344,duration=0.2)
             pyautogui.doubleClick(212,344,duration=0.2)
             keyboard.press('delete')
-            pyautogui.write("060079")
+            pyautogui.write(RESPONSAVEL)
             keyboard.press('tab')
 
             # Área
@@ -90,10 +89,10 @@ def iniciar_codigo():
             keyboard.press('tab')
 
             # Tabela de preço
-            pyautogui.click(184,428, duration=0.2)
+            pyautogui.click(238,427, duration=0.2)
             pyautogui.write(TABELA)
-            keyboard.press('tab')
-
+            pyautogui.click(660,238,duration=0.2)
+            pyautogui.click(823,613,duration=0.2)
             # Incluir placa
             pyautogui.click(76, 535, duration=0.2)
             pyautogui.click(469, 276, duration=0.2)
@@ -152,7 +151,7 @@ def iniciar_codigo():
             # Verificar se a imagem está na tela
             try:
                 while time() - tempo_inicial_verificacao < tempo_max_espera:
-                    if pyautogui.locateOnScreen('C:\\Users\\aprendiz.pcm\\Desktop\\site\\confirmar.png', confidence=0.8) is not None:
+                    if pyautogui.locateOnScreen("confirmar.png", confidence=0.8) is not None:                        
                         # Se a imagem for encontrada, execute o último click e saia do loop
                         pyautogui.click(883,421, duration=0.2)  
                         sleep(1)
@@ -213,7 +212,7 @@ def iniciar_codigo():
                 sleep(5)
                 keyboard.press('enter')
                 sleep(5)
-                pyautogui.write('start C:\\Users\\aprendiz.pcm\\Desktop\\KMM.lnk')
+                pyautogui.write('start C:\\Users\\Admin.Mix\\Desktop\\KMM.lnk')
                 sleep(5)
                 keyboard.press('enter')
                 sleep(5)
