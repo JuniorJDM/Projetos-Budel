@@ -3,7 +3,7 @@
 import pyautogui
 import time
 
-for i in range(50400):
+for i in range(99999999):
     time.sleep(1)
 
     # Automação ALT + TAB
